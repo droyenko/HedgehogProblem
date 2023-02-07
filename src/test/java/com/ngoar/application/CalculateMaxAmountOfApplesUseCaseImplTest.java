@@ -1,16 +1,16 @@
 package com.ngoar.application;
 
 import com.ngoar.application.fixture.TestInputProvider;
-import com.ngoar.application.fixture.TestResultProducer;
+import com.ngoar.application.fixture.TestResultPresenter;
 import com.ngoar.domain.infrastructure.InputProvider;
-import com.ngoar.domain.infrastructure.ResultProducer;
+import com.ngoar.domain.infrastructure.ResultPresenter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculateMaxAmountOfApplesUseCaseImplTest {
 
-    private final ResultProducer resultProducer = new TestResultProducer();
+    private final ResultPresenter resultPresenter = new TestResultPresenter();
 
     @Test
     void givenArrayFromTechTask_thenReturnExpectedResult() {
@@ -23,7 +23,7 @@ class CalculateMaxAmountOfApplesUseCaseImplTest {
 
         final InputProvider inputProvider = TestInputProvider.of(garden);
         final CalculateMaxAmountOfApplesUseCaseImpl useCase = new CalculateMaxAmountOfApplesUseCaseImpl(
-            inputProvider, this.resultProducer);
+            inputProvider, this.resultPresenter);
 
         // When
         final int result = useCase.makeHedgehogHappy();
@@ -43,7 +43,7 @@ class CalculateMaxAmountOfApplesUseCaseImplTest {
 
         final InputProvider inputProvider = TestInputProvider.of(garden);
         final CalculateMaxAmountOfApplesUseCaseImpl useCase = new CalculateMaxAmountOfApplesUseCaseImpl(
-            inputProvider, this.resultProducer);
+            inputProvider, this.resultPresenter);
 
         // When
         final int result = useCase.makeHedgehogHappy();
@@ -61,7 +61,7 @@ class CalculateMaxAmountOfApplesUseCaseImplTest {
 
         final InputProvider inputProvider = TestInputProvider.of(garden);
         final CalculateMaxAmountOfApplesUseCaseImpl useCase = new CalculateMaxAmountOfApplesUseCaseImpl(
-            inputProvider, this.resultProducer);
+            inputProvider, this.resultPresenter);
 
         // When
         final int result = useCase.makeHedgehogHappy();
@@ -83,7 +83,7 @@ class CalculateMaxAmountOfApplesUseCaseImplTest {
 
         final InputProvider inputProvider = TestInputProvider.of(garden);
         final CalculateMaxAmountOfApplesUseCaseImpl useCase = new CalculateMaxAmountOfApplesUseCaseImpl(
-            inputProvider, this.resultProducer);
+            inputProvider, this.resultPresenter);
 
         // When
         final int result = useCase.makeHedgehogHappy();
@@ -101,7 +101,7 @@ class CalculateMaxAmountOfApplesUseCaseImplTest {
 
         final InputProvider inputProvider = TestInputProvider.of(garden);
         final CalculateMaxAmountOfApplesUseCaseImpl useCase = new CalculateMaxAmountOfApplesUseCaseImpl(
-            inputProvider, this.resultProducer);
+            inputProvider, this.resultPresenter);
 
         // When
         final int result = useCase.makeHedgehogHappy();
@@ -123,7 +123,7 @@ class CalculateMaxAmountOfApplesUseCaseImplTest {
 
         final InputProvider inputProvider = TestInputProvider.of(garden);
         final CalculateMaxAmountOfApplesUseCaseImpl useCase = new CalculateMaxAmountOfApplesUseCaseImpl(
-            inputProvider, this.resultProducer);
+            inputProvider, this.resultPresenter);
 
         // When
         final int result = useCase.makeHedgehogHappy();
@@ -145,7 +145,7 @@ class CalculateMaxAmountOfApplesUseCaseImplTest {
 
         final InputProvider inputProvider = TestInputProvider.of(garden);
         final CalculateMaxAmountOfApplesUseCaseImpl useCase = new CalculateMaxAmountOfApplesUseCaseImpl(
-            inputProvider, this.resultProducer);
+            inputProvider, this.resultPresenter);
 
         // When
         final int result = useCase.makeHedgehogHappy();

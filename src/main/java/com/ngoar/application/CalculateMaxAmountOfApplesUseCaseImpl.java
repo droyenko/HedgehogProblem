@@ -1,17 +1,20 @@
 package com.ngoar.application;
 
-import com.ngoar.domain.infrastructure.InputProvider;
-import com.ngoar.domain.infrastructure.ResultProducer;
-import com.ngoar.domain.usecase.CalculateMaxAmountOfApplesUseCase;
+import java.util.Arrays;
 
+import com.ngoar.domain.infrastructure.InputProvider;
+import com.ngoar.domain.infrastructure.ResultPresenter;
+import com.ngoar.domain.usecase.CalculateMaxAmountOfApplesUseCase;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class CalculateMaxAmountOfApplesUseCaseImpl implements CalculateMaxAmountOfApplesUseCase {
 
     private final InputProvider inputProvider;
-    private final ResultProducer resultProducer;
-
-    public CalculateMaxAmountOfApplesUseCaseImpl(InputProvider inputProvider, ResultProducer resultProducer) {
+    private final ResultPresenter resultPresenter;
+    public CalculateMaxAmountOfApplesUseCaseImpl(InputProvider inputProvider, ResultPresenter resultPresenter) {
         this.inputProvider = inputProvider;
-        this.resultProducer = resultProducer;
+        this.resultPresenter = resultPresenter;
     }
 
     @Override
@@ -21,29 +24,36 @@ public class CalculateMaxAmountOfApplesUseCaseImpl implements CalculateMaxAmount
             final int[][] garden = this.inputProvider.provideMatrix();
             result = this.calculateMaxAmount(garden);
 
-            System.out.printf("Hedgehog has collected %d apples%n", result);
+            log.info("Hedgehog has collected {} apples", result);
 
-            this.resultProducer.provideResult(result);
+            this.resultPresenter.provideResult(result);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.error(e.getMessage());
         }
         return result;
     }
 
     private int calculateMaxAmount(int[][] garden) {
-        int m = garden.length - 1;
-        int n = garden[0].length - 1;
-        return getMax(garden, m, n);
+        int m = garden.length;
+        int n = garden[0].length;
+        int[][] memo = new int[m][n];
+        Arrays.stream(memo).forEach(a -> Arrays.fill(a, -1));
+        return getMax(garden, memo, m - 1, n - 1);
     }
 
-    private int getMax(int[][] garden, int m, int n) {
+    private int getMax(int[][] garden, int[][] memo, int m, int n) {
         if (m == 0 && n == 0) {
             return garden[0][0];
         }
         if (m < 0 || n < 0) {
             return Integer.MIN_VALUE;
         }
+        if (memo[m][n] >= 0) {
+            return memo[m][n];
+        }
 
-        return garden[m][n] + Math.max(getMax(garden, m - 1, n), getMax(garden, m, n - 1));
+        memo[m][n] = Math.max(getMax(garden, memo, m - 1, n), getMax(garden, memo, m, n - 1)) + garden[m][n];
+
+        return memo[m][n];
     }
 }

@@ -3,7 +3,7 @@ package com.ngoar.hedgehogproblem;
 import com.ngoar.application.CalculateMaxAmountOfApplesUseCaseImpl;
 import com.ngoar.domain.usecase.CalculateMaxAmountOfApplesUseCase;
 import com.ngoar.infrastructure.file.FileInputProvider;
-import com.ngoar.infrastructure.file.FileResultProducer;
+import com.ngoar.infrastructure.file.FileResultPresenter;
 
 public class Application {
 
@@ -11,7 +11,7 @@ public class Application {
 
         CalculateMaxAmountOfApplesUseCase applesCounter = new CalculateMaxAmountOfApplesUseCaseImpl(
             new FileInputProvider(),
-            new FileResultProducer());
+            new FileResultPresenter());
 
         applesCounter.makeHedgehogHappy();
 

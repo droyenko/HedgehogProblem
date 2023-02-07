@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.ngoar.domain.infrastructure.InputProvider;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class FileInputProvider implements InputProvider {
 
     public static final String RESOURCE_DIR = "src/main/resources/";
@@ -44,11 +46,11 @@ public class FileInputProvider implements InputProvider {
         final String[] arrayDimensions = inputLines.get(0).split(DELIMITER);
         int[][] garden = new int[Integer.parseInt(arrayDimensions[0])][Integer.parseInt(arrayDimensions[1])];
 
-        System.out.printf("Provided two dimensional array from file %s%n", fileName);
+        log.info("Provided two dimensional array from file {}", fileName);
 
         for (int i = 1; i < inputLines.size(); i++) {
             final String[] applesQuantity = inputLines.get(i).split(DELIMITER);
-            System.out.println(Arrays.toString(applesQuantity));
+            log.info(Arrays.toString(applesQuantity));
 
             for (int j = 0; j < applesQuantity.length; j++) {
                 garden[i - 1][j] = Integer.parseInt(applesQuantity[j]);

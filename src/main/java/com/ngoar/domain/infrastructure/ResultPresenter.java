@@ -1,6 +1,6 @@
 package com.ngoar.domain.infrastructure;
 
-public interface ResultProducer {
+public interface ResultPresenter {
 
     void provideResult(Integer result);
 

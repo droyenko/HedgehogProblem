@@ -1,8 +1,8 @@
 package com.ngoar.infrastructure.database;
 
-import com.ngoar.domain.infrastructure.ResultProducer;
+import com.ngoar.domain.infrastructure.ResultPresenter;
 
-public class DataBaseResultProducer implements ResultProducer {
+public class DataBaseResultPresenter implements ResultPresenter {
 
     @Override
     public void provideResult(Integer result) {

@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import com.ngoar.domain.infrastructure.ResultProducer;
+import com.ngoar.domain.infrastructure.ResultPresenter;
+import lombok.extern.slf4j.Slf4j;
 
 import static com.ngoar.infrastructure.file.FileInputProvider.RESOURCE_DIR;
 
-public class FileResultProducer implements ResultProducer {
+@Slf4j
+public class FileResultPresenter implements ResultPresenter {
 
     public static final String OUTPUT_FILE = "Output.txt";
 
@@ -21,7 +23,7 @@ public class FileResultProducer implements ResultProducer {
             throw new IllegalArgumentException(
                 String.format("File %s cannot be written to the %s directory", OUTPUT_FILE, RESOURCE_DIR));
         }
-        System.out.printf("Result was successfully written to %s file of %s directory%n", OUTPUT_FILE, RESOURCE_DIR);
+        log.info("Result was successfully written to {} file of {} directory%n", OUTPUT_FILE, RESOURCE_DIR);
     }
 
 }

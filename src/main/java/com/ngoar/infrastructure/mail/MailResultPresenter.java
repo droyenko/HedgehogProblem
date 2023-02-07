@@ -1,8 +1,8 @@
 package com.ngoar.infrastructure.mail;
 
-import com.ngoar.domain.infrastructure.ResultProducer;
+import com.ngoar.domain.infrastructure.ResultPresenter;
 
-public class MailResultProducer implements ResultProducer {
+public class MailResultPresenter implements ResultPresenter {
 
     @Override
     public void provideResult(Integer result) {
